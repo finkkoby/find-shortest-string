@@ -25,6 +25,27 @@ if (require.main === module) {
 
   // BENCHMARK HERE
 }
+let longInput = [];
+function randomArray(emptyArray, length) {
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  let counter = 0;
+  while (counter < length) {
+    let newWord = '';
+  for (let i= 0; i < Math.random() * 20; i++) {
+    newWord += characters.charAt(Math.floor(Math.random() * 52))
+  }
+    emptyArray.push(newWord);
+    counter++;
+  }
+}
+randomArray(longInput, 100);
+let startTime = Date.now();
+for (let i = 0; i < 1000; i++) {
+  findShortestString(['aaa', 'a', 'bb', 'ccc']);
+  findShortestString(longInput);
+}
+let average = (Date.now() - startTime) / 2000;
+console.log(average);
 
 module.exports = findShortestString;
 
